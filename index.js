@@ -3,6 +3,7 @@ document.addEventListener("DOMContentLoaded", function() {
     const text = document.querySelector('.text');
     const img = document.querySelector('img');
     const gift = document.querySelector('.gift');
+    const blackSpan = document.querySelector('.black');
     let confettiActive = false;
 
     lid.addEventListener('click', function() {
@@ -11,6 +12,9 @@ document.addEventListener("DOMContentLoaded", function() {
         img.classList.remove('reverse');
         img.classList.add('hover');
         lid.classList.add('hover');
+        blackSpan.classList.add('hover');
+        confetti()
+
         if (!confettiActive) {
             confettiActive = true;
             const end = Date.now() + 15 * 500;
@@ -47,6 +51,7 @@ document.addEventListener("DOMContentLoaded", function() {
         img.classList.remove('hover');
         img.classList.add('reverse');
         lid.classList.remove('hover');
+        blackSpan.classList.remove('hover');
         confettiActive = false;
         confetti()
     });
