@@ -10,11 +10,13 @@
 }
 
 html {
-    overflow: hidden;
     height: 100vh;
 }
 
 body {
+    overflow: hidden;
+
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
     height: 100%;
 }
 
@@ -31,32 +33,42 @@ main {
     justify-content: center;
 }
 
-.present {
+.gift {
     position: relative;
     z-index: 5;
     box-shadow: 0px 4px 8px #000000aa;
 }
+.gift.scale {
+    /* animation:  delay iteration-count direction fill-mode; */
+    animation: scale-anim 1s ease;
+}
+@keyframes scale-anim {
+    0% {transform: scaleX(1);}
+    25% {transform: scaleX(0.9);}
+    50% {transform: scaleX(1.1);}
+    100% {transform: scaleX(1);}
 
+}
 .red-box {
     height: var(--element-h);
     width: var(--element-w);
-    background-color: red;
+    background-color: #f00000;
 }
 
 .rope {
-    background-color: orange;
+    background-color: #ffbb00;
     height: var(--element-h);
     width: 2rem;
 }
 
 .lid-rope {
-    background-color: orange;
+    background-color: #ffbb00;
     width: 2rem;
     height: var(--lid-h);
 }
 
 .lid-box {
-    background-color: red;
+    background-color: #ff0000;
     width: calc(var(--element-w) * 1.15);
     height: var(--lid-h);
 }
@@ -71,24 +83,102 @@ main {
     transition: all 1s ease-in-out;
 }
 
-.lid:hover {
-    transform: translate(-20rem,-20rem);
-    rotate: 90deg;
+.lid:hover, img:hover {
+    cursor: pointer;
 }
+.lid.hover {
+    transform: translate(-30rem,-90rem);
+    rotate: 90deg;
 
+}
 .text {
+    flex-direction: column;
     position: absolute;
     top: 0;
     z-index: 1;
     white-space: nowrap;
     left: 50%;
+    transform: scaleX(0.1);
     transform: translateX(-50%) scaleX(0.1);
-    color: #00000055;
+    color: #00000000;
     transition: all 1s ease-in-out;
+
 }
 
 .text.hover {
     color: #000000ff;
+    transform: translate(-50%, -10rem) scaleX(0.9);
+}
+img {
+    width: calc(var(--element-w)*3);
+    opacity: 0;
+    max-width: calc(var(--element-w)*3);
+    height: auto;
+    position: absolute;
+    top: -8rem;
+    z-index: 1;
+    white-space: nowrap;
+    left: 50%;
+}
+img.hover {
 
-    transform: translate(-50%, -10rem) scale(1);
+    animation: gif 2s cubic-bezier(0.075, 0.82, 0.165, 1) 1s forwards;
+}
+img.reverse {
+    animation: gif-reverse 2s cubic-bezier(0.075, 0.82, 0.165, 1) forwards;
+
+}
+@keyframes gif {
+    0% {transform: translate(-50%,0) scale(0.1) rotateX(0deg) rotateY(0deg);
+    opacity: 0;}
+    30% {transform: translate(-50%,-6rem) scale(0.3) rotateX(180deg) rotateY(180deg);
+    opacity: 1;}
+    100% {transform: translate(-50%,5rem) scale(1) rotateX(1080deg) rotateY(360deg);
+        opacity: 1;
+    }
+}
+@keyframes gif-reverse {
+    0% {
+        transform: translate(-50%, 5rem) scale(1) rotateX(1080deg) rotateY(360deg);
+        opacity: 1;
+    }
+    30% {
+        transform: translate(-50%, -6rem) scale(0.3) rotateX(180deg) rotateY(180deg);
+        opacity: 1;
+    }
+    100% {
+        transform: translate(-50%, 0) scale(0.1) rotateX(0deg) rotateY(0deg);
+        opacity: 0;
+    }
+}
+span {
+    color:#ffbb00;
+}
+.ribbon {
+
+    position: absolute;
+    transform: translateX(-50%);
+    top: 0.8rem;
+    left: 50%;
+}
+.ribbon-left, .ribbon-right {
+    height: 1.7rem;
+    border-radius: 1rem ;
+}
+.ribbon-left {
+    transform: translate(-1rem, 0rem);
+    width: 4rem;
+
+    rotate: 60deg;
+    background-color: #e7aa00;
+    
+}
+.ribbon-right {
+    background-color: #ffbb00;
+    transform: translate(-3rem,1rem);
+    width: 4rem;
+
+    rotate: 120deg;
+
+
 }
