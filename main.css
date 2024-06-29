@@ -1,0 +1,80 @@
+:root {
+    --element-w: 6rem;
+    --element-h: 11rem;
+    --lid-h: 3.2rem;
+}
+* {
+    margin: 0;
+    padding: 0;
+}
+html {
+    height: 100vh;
+}
+body {
+    height: 100%;
+}
+main {
+    height: 100%;
+
+}
+.flex {
+    display: flex;
+}
+.center {
+    align-items: center;
+    justify-content: center;
+}
+.present {
+    position: relative;
+    z-index: 0;
+    box-shadow: 0px 4px 8px #000000aa;
+}
+.red-box {
+    height: var(--element-h);
+    width: var(--element-w);
+    background-color: red;
+}
+.rope {
+    background-color: orange;
+    height: var(--element-h);
+    width: 2rem;
+}
+.lid-rope {
+    background-color: orange;
+    width: 2rem;
+    height: var(--lid-h);
+}
+.lid-box {
+    background-color: red;
+    width: calc(var(--element-w)*1.15);
+    height: var(--lid-h);
+}
+.lid {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    top: -1rem;
+    z-index: 10;
+    box-shadow: 0px 5px 6px #000000aa;
+    transition: all 1s ease-in-out;
+}
+.lid:hover {
+    transform: translate(-20rem,-20rem);
+    rotate: 90deg;
+}
+.text{
+    position: absolute;
+    top: 0;
+    z-index: 1;
+    text-wrap: nowrap;
+    left: 50%;
+    transform: translateX(-50%) scaleX(10%);
+    transition: all 1s ease-in-out;
+}
+.text.hover {
+    transform:  translate(-50%,-10rem) scale(100%);
+
+}
+/* .scale-horizontal {
+    transform: scaleX(10rem);
+} */
